@@ -30,7 +30,8 @@ const articleSchema = new mongoose.Schema(
       type: String,
     },
     tags: {
-      type: String,
+      type: [String],
+      default: [],
     },
     body: {
       type: String,
@@ -43,8 +44,11 @@ const articleSchema = new mongoose.Schema(
 export const validateArticle = (payload) => {
   const schema = Joi.object({
     author: Joi.string().min(3).max(40),
-    description: Joi.string().min(3).max(255),
-    body: Joi.string().min(10).min(),
+    description: Joi.string().min(3).max(255).required(),
+    body: Joi.string().min(10).required(),
+    title: Joi.string().min(3).max(255).required(),
+    author: Joi.string().min(3).max(50).required(),
+    tags: Joi.array().items(Joi.string().min(2)),
   });
   return schema.validate(payload);
 };
