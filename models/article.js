@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Joi from "joi";
 
 const articleSchema = new mongoose.Schema(
   {
@@ -23,7 +24,7 @@ const articleSchema = new mongoose.Schema(
     },
     read_count: {
       type: Number,
-      required: true,
+      default: 0,
     },
     reading_time: {
       type: String,
@@ -38,5 +39,14 @@ const articleSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+export const validateArticle = (payload) => {
+  const schema = Joi.object({
+    author: Joi.string().min(3).max(40),
+    description: Joi.string().min(3).max(255),
+    body: Joi.string().min(10).min(),
+  });
+  return schema.validate(payload);
+};
 
 export const Article = mongoose.model("Article", articleSchema);
