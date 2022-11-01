@@ -1,5 +1,18 @@
 import express from "express";
+import connectToDb from "./startup/db.js";
+import dotenv from "dotenv";
+import useRoutesFor from "./startup/routes.js";
+import cors from "cors";
 
 const app = express();
 const port = process.env.PORT || 4000;
-app.listen(port, () => console.log(`The server is now running on port ${port}...`));
+
+dotenv.config();
+// Middleware functions
+app.use(express.json());
+app.use(cors());
+useRoutesFor(app);
+app.listen(port, () =>
+  console.log(`The server is now running on port ${port}...`)
+);
+connectToDb();
