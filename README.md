@@ -34,7 +34,11 @@ c.	It is orderable by read_count, reading_time and timestamp
 https://blog-api-2005.herokuapp.com/
 
 ## Models
-| field      | data_type |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
+
+### User
+| field      | data_type |  constraints |
+| ----------- | ----------- | ----------- |
+| id      | string       | required, unique |
+| first_name   | string        | required |
+| last_name   | string        | required |
+| email   | string        | required, unique |
