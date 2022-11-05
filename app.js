@@ -1,11 +1,10 @@
 import express from "express";
 import connectToDb from "./startup/db.js";
-import config from "config";
 import useRoutesFor from "./startup/routes.js";
 import cors from "cors";
 import logger from "morgan";
+import app from "./startup/server.js";
 
-const app = express();
 const port = process.env.PORT || 4000;
 
 import "./controllers/user.js";
