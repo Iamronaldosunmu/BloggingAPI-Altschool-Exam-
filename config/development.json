@@ -1,5 +1,5 @@
 {
-  "MONGO_URI": "mongodb://localhost:27017/bloggr",
+  "MONGO_URI": "mongodb+srv://RonaldDosunmu:Movenpick123@cluster0.uq5x9pb.mongodb.net/?retryWrites=true&w=majority",
   "JWT_SECRET": "klsnfjler1jk2nkjnjk12nvkdlm",
   "PORT": "4000"
 }
