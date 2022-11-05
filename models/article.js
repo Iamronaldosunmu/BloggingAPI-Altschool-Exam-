@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import Joi from "joi";
+import { authorSchema } from "./author.js";
 
 const articleSchema = new mongoose.Schema(
   {
@@ -9,7 +10,7 @@ const articleSchema = new mongoose.Schema(
       default: "draft",
     },
     author: {
-      type: String,
+      type: authorSchema,
       required: true,
     },
     title: {
@@ -27,7 +28,11 @@ const articleSchema = new mongoose.Schema(
       default: 0,
     },
     reading_time: {
-      type: String,
+      type: {
+        reading_time_in_words: String,
+        reading_time_in_minutes: Number,
+      },
+      required: true,
     },
     tags: {
       type: [String],
@@ -41,13 +46,15 @@ const articleSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+articleSchema.methods.isPublished = function () {
+  return this.state.toString() == "published";
+};
+
 export const validateArticle = (payload) => {
   const schema = Joi.object({
-    author: Joi.string().min(3).max(40),
     description: Joi.string().min(3).max(255).required(),
     body: Joi.string().min(10).required(),
     title: Joi.string().min(3).max(255).required(),
-    author: Joi.string().min(3).max(50).required(),
     tags: Joi.array().items(Joi.string().min(2)),
   });
   return schema.validate(payload);
