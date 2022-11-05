@@ -1,1 +1,3 @@
 # BloggingAPI-Altschool-Exam-
+
+## Requirements
