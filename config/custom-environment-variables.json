@@ -1,0 +1,4 @@
+{
+  "MONGO_URI": "Bloggr_MONGO_URI",
+  "JWT_SECRET": "Bloggr_JWT_SECRET"
+}
