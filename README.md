@@ -1,5 +1,6 @@
 # BloggingAPI-Altschool-Exam-
 
+
 ## Requirements
 1.	Users can have a first_name, last_name, email, password
 2.	A user can sign up and sign in into the blog app
@@ -21,3 +22,19 @@ a.	default it to 20 blogs per page.
 b.	It is searchable by author, title and tags.
 c.	It is orderable by read_count, reading_time and timestamp
 15. The owner of the blog should be logged in to perform actions
+
+
+## Setup
+- Install NodeJS, mongodb
+- pull this repo
+- update config/default.json with custom variables
+
+
+## Base URL
+https://blog-api-2005.herokuapp.com/
+
+## Models
+| field      | data_type |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
