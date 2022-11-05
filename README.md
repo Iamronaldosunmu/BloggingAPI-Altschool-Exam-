@@ -1,5 +1,5 @@
 # BloggingAPI-Altschool-Exam-
-
+This is an api for a blog management system
 
 ## Requirements
 1.	Users can have a first_name, last_name, email, password
