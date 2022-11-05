@@ -63,3 +63,129 @@ https://blog-api-2005.herokuapp.com/
 | author.first_name | string | required |
 | author.last_name | string | required |
 | author.email | string | required |
+
+## APIs
+
+
+### Signup User
+- Route: /signup
+- Method: POST
+- Body: 
+```
+{
+  "first_name": "Ronaldd", 
+  "last_name": "Dosunmu", 
+  "email": "ronaldosunmu@gmail.com", 
+  "password": "Mypasswordis12563"
+}
+```
+
+- Responses
+
+Success
+```
+{
+  "message": "Sign up Successful!",
+  "user": {
+    "first_name": "Ronaldd",
+    "last_name": "Dosunmu",
+    "email": "ronaldosunmu1@gmail.com",
+    "password": "$2b$10$LYHO5CA/kcOLDKBcQYea1u.i1n1lpVKaD6HKhemkwYBdkMdhqN.Xa",
+    "_id": "6366942a4f82778fd3bd73ac",
+    "__v": 0
+  }
+}
+```
+---
+### Login User
+
+- Route: /login
+- Method: POST
+- Body: 
+```
+{
+  "email": "ronaldosunmu1@gmail.com", 
+  "password": "Mypassword12563"
+}
+```
+
+- Responses
+
+Success
+```
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzNjY5NDJhNGY4Mjc3OGZkM2JkNzNhYyIsImZpcnN0X25hbWUiOiJSb25hbGRkIiwibGFzdF9uYW1lIjoiRG9zdW5tdSIsImVtYWlsIjoicm9uYWxkb3N1bm11MUBnbWFpbC5jb20ifSwiaWF0IjoxNjY3NjY3MDQxLCJleHAiOjE2Njc2NzA2NDF9.caPLOXv-2KhwaFT-CCvE636I7pV1hpvNtSojJm4KR9I"
+}
+```
+
+---
+### Create Article
+
+- Route: /orders
+- Method: POST
+- Header
+    - Authorization: Bearer {token}
+- Body: 
+```
+{
+  "title": "My name is ronald", 
+  "body": "There was once a story of an little child s sfsf sf rserw f ewf we ew. He was the strongest across all the lands. His name was the incredible hulk. He was a green little fellow with the muscles of a lion and the smarts of a Hyena. He loved to write and sing, but all of that didn't matter because everyone that met him was repelled by his unique looks iewoii i ie iw i i ai i wei wri iwe fiw eif wei fiwe iwe i wei wei weci wei ier bie bi eig ei biwe fir iw irw gier wvire gir i eire ier bire bie i wkl efkwe flewfklew flkwe flkwe fklwe fkwe flwek flwe fklwef klwe flkwe flkwe flkwe fwkle fklwe fklwe fklwe flkew fkelw fklwe fklwe fkewl flwke flkwe flwek fwkel flewk flkwe fklwe flwer ge ier gegeroy gsxa qot", 
+  "description": "A quick story about the life of the incredible hulk lker flke rflkr lk etlk ytlkr klerg erl gklrt hkl vdfkl vk bklerv eklr vkerl vkre gtkr hlk tkl fvlkwr fkelr klv erlk gkle rgkler glekr g", 
+  "tags": ["drama", "coding", "Netflix"]
+}
+```
+
+- Responses
+
+Success
+```
+{
+  "article": {
+    "state": "draft",
+    "author": {
+      "_id": "6366942a4f82778fd3bd73ac",
+      "first_name": "Ronaldd",
+      "last_name": "Dosunmu",
+      "email": "ronaldosunmu1@gmail.com"
+    },
+    "title": "My name is rnafflffffffd",
+    "description": "A quick story about the life of the incredible hulk lker flke rflkr lk etlk ytlkr klerg erl gklrt hkl vdfkl vk bklerv eklr vkerl vkre gtkr hlk tkl fvlkwr fkelr klv erlk gkle rgkler glekr g",
+    "read_count": 0,
+    "reading_time": {
+      "reading_time_in_words": "1 min read",
+      "reading_time_in_minutes": 0.6176470588235294,
+      "_id": "636694b24f82778fd3bd73cb"
+    },
+    "tags": [
+      "drama",
+      "coding",
+      "Netflix"
+    ],
+    "body": "There was once a story of an little child s sfsf sf rserw f ewf we ew. He was the strongest across all the lands. His name was the incredible hulk. He was a green little fellow with the muscles of a lion and the smarts of a Hyena. He loved to write and sing, but all of that didn't matter because everyone that met him was repelled by his unique looks iewoii i ie iw i i ai i wei wri iwe fiw eif wei fiwe iwe i wei wei weci wei ier bie bi eig ei biwe fir iw irw gier wvire gir i eire ier bire bie i wkl efkwe flewfklew flkwe flkwe fklwe fkwe flwek flwe fklwef klwe flkwe flkwe flkwe fwkle fklwe fklwe fklwe flkew fkelw fklwe fklwe fkewl flwke flkwe flwek fwkel flewk flkwe fklwe flwer ge ier gegeroy gsxa qot",
+    "_id": "636694b24f82778fd3bd73ca",
+    "createdAt": "2022-11-05T16:52:02.156Z",
+    "updatedAt": "2022-11-05T16:52:02.156Z",
+    "__v": 0
+  },
+  "message": "Article created successfully!"
+}
+```
+
+---
+### Get Article
+(Article has to be published, else, 404 error!)
+- Route: /article/:id
+- Method: GET
+
+- Responses
+
+Success
+```
+{
+    state: 1,
+    total_price: 900,
+    created_at: Mon Oct 31 2022 08:35:00 GMT+0100,
+    items: [{ name: 'chicken pizza', price: 900, size: 'm', quantity: 1}]
+}
+```
+---
