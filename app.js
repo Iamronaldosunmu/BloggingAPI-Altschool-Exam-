@@ -14,6 +14,12 @@ app.use(express.json());
 app.use(cors());
 app.use(logger("dev"));
 useRoutesFor(app);
+app.get("/", (req, res) => {
+  res.send(`
+  Welcome!
+  This is an api for a blog management system, feel free to log in and blog away🚀🚀
+  `);
+});
 app.listen(port, () =>
   console.log(`The server is now running on port ${port}...`)
 );
