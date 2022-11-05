@@ -42,3 +42,23 @@ https://blog-api-2005.herokuapp.com/
 | first_name   | string        | required |
 | last_name   | string        | required |
 | email   | string        | required, unique |
+
+### Article
+| field      | data_type |  constraints |
+| ----------- | ----------- | ----------- |
+| id      | string       | required, unique |
+| created_at   | date        | required |
+| updated_at | date | required |
+| state  | string        | required, default: draft, enum: ['draft', 'published'] |
+| email   | string        | required, unique |
+| title  | string | required, unique |
+| description | string | required |
+| read_count  | number | required |
+| reading_time.reading_time_in_words | string | required |
+| reading_time.reading_time_in_minutes | string | required |
+| tags | string[] | required, default: [] |
+| body | string | required |
+| author.id | string | required |
+| author.first_name | string | required |
+| author.last_name | string | required |
+| author.email | string | required |
