@@ -172,7 +172,7 @@ Success
 ```
 
 ---
-### Get Article
+### Get an Article
 (Article has to be published, else, 404 error!)
 - Route: /article/:id
 - Method: GET
@@ -182,10 +182,260 @@ Success
 Success
 ```
 {
-    state: 1,
-    total_price: 900,
-    created_at: Mon Oct 31 2022 08:35:00 GMT+0100,
-    items: [{ name: 'chicken pizza', price: 900, size: 'm', quantity: 1}]
+  "_id": "636694974f82778fd3bd73b1",
+  "state": "published",
+  "author": {
+    "_id": "6366942a4f82778fd3bd73ac",
+    "first_name": "Ronaldd",
+    "last_name": "Dosunmu",
+    "email": "ronaldosunmu1@gmail.com"
+  },
+  "title": "My name is ronald",
+  "description": "A quick story about the life of the incredible hulk lker flke rflkr lk etlk ytlkr klerg erl gklrt hkl vdfkl vk bklerv eklr vkerl vkre gtkr hlk tkl fvlkwr fkelr klv erlk gkle rgkler glekr g",
+  "read_count": 1,
+  "reading_time": {
+    "reading_time_in_words": "1 min read",
+    "reading_time_in_minutes": 0.6176470588235294,
+    "_id": "636694974f82778fd3bd73b2"
+  },
+  "tags": [
+    "drama",
+    "coding",
+    "Netflix"
+  ],
+  "body": "There was once a story of an little child s sfsf sf rserw f ewf we ew. He was the strongest across all the lands. His name was the incredible hulk. He was a green little fellow with the muscles of a lion and the smarts of a Hyena. He loved to write and sing, but all of that didn't matter because everyone that met him was repelled by his unique looks iewoii i ie iw i i ai i wei wri iwe fiw eif wei fiwe iwe i wei wei weci wei ier bie bi eig ei biwe fir iw irw gier wvire gir i eire ier bire bie i wkl efkwe flewfklew flkwe flkwe fklwe fkwe flwek flwe fklwef klwe flkwe flkwe flkwe fwkle fklwe fklwe fklwe flkew fkelw fklwe fklwe fkewl flwke flkwe flwek fwkel flewk flkwe fklwe flwer ge ier gegeroy gsxa qot",
+  "createdAt": "2022-11-05T16:51:35.325Z",
+  "updatedAt": "2022-11-05T17:41:08.881Z",
+  "__v": 0
 }
 ```
 ---
+
+---
+### Get all Articles
+(Article has to be published, else, 404 error!)
+- Route: /article
+- Method: GET
+- Query params: 
+    - page (default: 1)
+    - author
+    - title
+    - tag
+    - sortBy (createdAt | read_count | reading_time)
+    - state
+    - created_at
+- Responses
+
+Success
+```
+[{
+  "_id": "636694974f82778fd3bd73b1",
+  "state": "published",
+  "author": {
+    "_id": "6366942a4f82778fd3bd73ac",
+    "first_name": "Ronaldd",
+    "last_name": "Dosunmu",
+    "email": "ronaldosunmu1@gmail.com"
+  },
+  "title": "My name is ronald",
+  "description": "A quick story about the life of the incredible hulk lker flke rflkr lk etlk ytlkr klerg erl gklrt hkl vdfkl vk bklerv eklr vkerl vkre gtkr hlk tkl fvlkwr fkelr klv erlk gkle rgkler glekr g",
+  "read_count": 1,
+  "reading_time": {
+    "reading_time_in_words": "1 min read",
+    "reading_time_in_minutes": 0.6176470588235294,
+    "_id": "636694974f82778fd3bd73b2"
+  },
+  "tags": [
+    "drama",
+    "coding",
+    "Netflix"
+  ],
+  "body": "There was once a story of an little child s sfsf sf rserw f ewf we ew. He was the strongest across all the lands. His name was the incredible hulk. He was a green little fellow with the muscles of a lion and the smarts of a Hyena. He loved to write and sing, but all of that didn't matter because everyone that met him was repelled by his unique looks iewoii i ie iw i i ai i wei wri iwe fiw eif wei fiwe iwe i wei wei weci wei ier bie bi eig ei biwe fir iw irw gier wvire gir i eire ier bire bie i wkl efkwe flewfklew flkwe flkwe fklwe fkwe flwek flwe fklwef klwe flkwe flkwe flkwe fwkle fklwe fklwe fklwe flkew fkelw fklwe fklwe fkewl flwke flkwe flwek fwkel flewk flkwe fklwe flwer ge ier gegeroy gsxa qot",
+  "createdAt": "2022-11-05T16:51:35.325Z",
+  "updatedAt": "2022-11-05T17:41:08.881Z",
+  "__v": 0
+}]
+```
+---
+
+---
+### Publish an Article
+- Route: /article/:id/publish
+- Method: POST
+- Header
+    - Authorization: Bearer {token}
+- Responses
+
+Success
+```
+{
+  "message": "Article published successfully!"
+}
+```
+---
+
+
+---
+### Edit an Article
+- Route: /article/:id/publish
+- Method: PUT
+- Header
+    - Authorization: Bearer {token}
+
+Body: 
+```
+{
+  "title": "This is a new title", 
+  "description": "This is a dummy description, yes!", 
+  "body": "This is the body of the request", 
+  "tags": ["Netflix"]
+}
+```
+- Responses: 
+Success
+```
+{
+  "message": "The article has been updated successfully!",
+  "article": {
+    "_id": "636694974f82778fd3bd73b1",
+    "state": "published",
+    "author": {
+      "_id": "6366942a4f82778fd3bd73ac",
+      "first_name": "Ronaldd",
+      "last_name": "Dosunmu",
+      "email": "ronaldosunmu1@gmail.com"
+    },
+    "title": "This is a new title",
+    "description": "This is a dummy description, yes!",
+    "read_count": 1,
+    "reading_time": {
+      "reading_time_in_words": "1 min read",
+      "reading_time_in_minutes": 0.6176470588235294,
+      "_id": "636694974f82778fd3bd73b2"
+    },
+    "tags": [
+      "drama",
+      "coding",
+      "Netflix"
+    ],
+    "body": "This is the body of the request",
+    "createdAt": "2022-11-05T16:51:35.325Z",
+    "updatedAt": "2022-11-05T17:54:20.168Z",
+    "__v": 0
+  }
+}
+```
+---
+
+### Delete an Article
+
+- Route: /article/:id
+- Method: DELETE
+- Header:
+    - Authorization: Bearer {token}
+- Responses
+Success 
+```
+{
+  "message": "This article has been deleted successfully!",
+  "deleted_article": {
+    "_id": "636694974f82778fd3bd73b1",
+    "state": "published",
+    "author": {
+      "_id": "6366942a4f82778fd3bd73ac",
+      "first_name": "Ronaldd",
+      "last_name": "Dosunmu",
+      "email": "ronaldosunmu1@gmail.com"
+    },
+    "title": "This is a new title",
+    "description": "This is a dummy description, yes!",
+    "read_count": 1,
+    "reading_time": {
+      "reading_time_in_words": "1 min read",
+      "reading_time_in_minutes": 0.6176470588235294,
+      "_id": "636694974f82778fd3bd73b2"
+    },
+    "tags": [
+      "drama",
+      "coding",
+      "Netflix"
+    ],
+    "body": "This is the body of the request",
+    "createdAt": "2022-11-05T16:51:35.325Z",
+    "updatedAt": "2022-11-05T17:54:20.168Z",
+    "__v": 0
+  }
+}
+```
+
+### Get All articles by a user
+
+- Route: /article/authors/my_articles
+- Method: GET
+- Header:
+    - Authorization: Bearer {token}
+- Query params: 
+    - page (default: 1)
+    - state (options: draft | published)
+- Responses
+Success 
+```
+{
+  "articles": [
+    {
+      "_id": "636694b04f82778fd3bd73c5",
+      "state": "draft",
+      "author": {
+        "_id": "6366942a4f82778fd3bd73ac",
+        "first_name": "Ronaldd",
+        "last_name": "Dosunmu",
+        "email": "ronaldosunmu1@gmail.com"
+      },
+      "title": "My name is rnafflfffffd",
+      "description": "A quick story about the life of the incredible hulk lker flke rflkr lk etlk ytlkr klerg erl gklrt hkl vdfkl vk bklerv eklr vkerl vkre gtkr hlk tkl fvlkwr fkelr klv erlk gkle rgkler glekr g",
+      "read_count": 0,
+      "reading_time": {
+        "reading_time_in_words": "1 min read",
+        "reading_time_in_minutes": 0.6176470588235294,
+        "_id": "636694b04f82778fd3bd73c6"
+      },
+      "tags": [
+        "drama",
+        "coding",
+        "Netflix"
+      ],
+      "body": "There was once a story of an little child s sfsf sf rserw f ewf we ew. He was the strongest across all the lands. His name was the incredible hulk. He was a green little fellow with the muscles of a lion and the smarts of a Hyena. He loved to write and sing, but all of that didn't matter because everyone that met him was repelled by his unique looks iewoii i ie iw i i ai i wei wri iwe fiw eif wei fiwe iwe i wei wei weci wei ier bie bi eig ei biwe fir iw irw gier wvire gir i eire ier bire bie i wkl efkwe flewfklew flkwe flkwe fklwe fkwe flwek flwe fklwef klwe flkwe flkwe flkwe fwkle fklwe fklwe fklwe flkew fkelw fklwe fklwe fkewl flwke flkwe flwek fwkel flewk flkwe fklwe flwer ge ier gegeroy gsxa qot",
+      "createdAt": "2022-11-05T16:52:00.414Z",
+      "updatedAt": "2022-11-05T16:52:00.414Z",
+      "__v": 0
+    },
+    {
+      "_id": "636694b24f82778fd3bd73ca",
+      "state": "draft",
+      "author": {
+        "_id": "6366942a4f82778fd3bd73ac",
+        "first_name": "Ronaldd",
+        "last_name": "Dosunmu",
+        "email": "ronaldosunmu1@gmail.com"
+      },
+      "title": "My name is rnafflffffffd",
+      "description": "A quick story about the life of the incredible hulk lker flke rflkr lk etlk ytlkr klerg erl gklrt hkl vdfkl vk bklerv eklr vkerl vkre gtkr hlk tkl fvlkwr fkelr klv erlk gkle rgkler glekr g",
+      "read_count": 0,
+      "reading_time": {
+        "reading_time_in_words": "1 min read",
+        "reading_time_in_minutes": 0.6176470588235294,
+        "_id": "636694b24f82778fd3bd73cb"
+      },
+      "tags": [
+        "drama",
+        "coding",
+        "Netflix"
+      ],
+      "body": "There was once a story of an little child s sfsf sf rserw f ewf we ew. He was the strongest across all the lands. His name was the incredible hulk. He was a green little fellow with the muscles of a lion and the smarts of a Hyena. He loved to write and sing, but all of that didn't matter because everyone that met him was repelled by his unique looks iewoii i ie iw i i ai i wei wri iwe fiw eif wei fiwe iwe i wei wei weci wei ier bie bi eig ei biwe fir iw irw gier wvire gir i eire ier bire bie i wkl efkwe flewfklew flkwe flkwe fklwe fkwe flwek flwe fklwef klwe flkwe flkwe flkwe fwkle fklwe fklwe fklwe flkew fkelw fklwe fklwe fkewl flwke flkwe flwek fwkel flewk flkwe fklwe flwer ge ier gegeroy gsxa qot",
+      "createdAt": "2022-11-05T16:52:02.156Z",
+      "updatedAt": "2022-11-05T16:52:02.156Z",
+      "__v": 0
+    }
+  ]
+}
+```
